@@ -9,8 +9,8 @@
  */
 
 // Configuration
-$secret = 'YOUR_WEBHOOK_SECRET_HERE'; // 在 GitHub 中设置相同的 secret
-$projectPath = '/www/wwwroot/your-project-path'; // 修改为你的项目路径
+$secret = 'my-super-secret-key-123'; // 在 GitHub 中设置相同的 secret
+$projectPath = '/home/web/html/shrimp.5556655.xyz'; // 你的项目路径
 $branch = 'main';
 $logFile = __DIR__ . '/deploy.log';
 
