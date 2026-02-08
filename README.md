@@ -1,6 +1,6 @@
 # Pixel World Portfolio 🌸
 
-一个像素风格的个人博客网站，使用 React + TypeScript 前端和 PHP 后端。
+一个像素风格的个人博客网站。
 
 ![Preview](https://img.shields.io/badge/React-19-blue) ![PHP](https://img.shields.io/badge/PHP-8.3-purple) ![MySQL](https://img.shields.io/badge/MySQL-9-orange)
 
