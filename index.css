@@ -1,0 +1,463 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .dialogue-border {
+        border: 4px solid #2D2926;
+        box-shadow:
+            8px 0 0 -4px #2D2926,
+            -8px 0 0 -4px #2D2926,
+            0 8px 0 -4px #2D2926,
+            0 -8px 0 -4px #2D2926;
+    }
+
+    .sakura-petal {
+        width: 6px;
+        height: 6px;
+        background: #FFB7C5;
+        position: absolute;
+    }
+
+    .waterfall-pixel {
+        background: linear-gradient(to bottom, #E0FFFF, #87CEEB);
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+    }
+
+    .action-lines {
+        background: repeating-linear-gradient(45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 0, 0, 0.03) 10px,
+                rgba(0, 0, 0, 0.03) 11px);
+    }
+
+    .screentone {
+        background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
+        background-size: 4px 4px;
+        opacity: 0.1;
+    }
+
+    .scanlines {
+        background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.05) 50%,
+                rgba(0, 0, 0, 0.05));
+        background-size: 100% 4px;
+    }
+
+    .pixel-corners {
+        clip-path: polygon(4px 0, calc(100% - 4px) 0,
+                100% 4px, 100% calc(100% - 4px),
+                calc(100% - 4px) 100%, 4px 100%,
+                0 calc(100% - 4px), 0 4px);
+    }
+
+    .console-scrollbar::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .console-scrollbar::-webkit-scrollbar-track {
+        background: #8bac0f;
+    }
+
+    .console-scrollbar::-webkit-scrollbar-thumb {
+        background: #306230;
+        border: 1px solid #0f380f;
+    }
+
+    /* Login page wood pattern */
+    .bg-wood-pattern {
+        background-color: #8d5e32;
+        background-image:
+            linear-gradient(45deg, #7c502a 25%, transparent 25%, transparent 75%, #7c502a 75%, #7c502a),
+            linear-gradient(45deg, #7c502a 25%, transparent 25%, transparent 75%, #7c502a 75%, #7c502a);
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+    }
+
+    /* Projects Page Components */
+    .pixel-tree-2 {
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 60px solid #2e7d32;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .pixel-tree-2::after {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: -5px;
+        width: 10px;
+        height: 15px;
+        background: #5d4037;
+    }
+
+    .pixel-flower {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        box-shadow: 4px 0, -4px 0, 0 -4px, 0 4px;
+    }
+
+    .pixel-cottage {
+        position: absolute;
+        bottom: 32%;
+        right: 15%;
+        width: 60px;
+        height: 40px;
+        background: #ffe0b2;
+        border: 4px solid #5d4037;
+        z-index: 1;
+    }
+
+    .pixel-cottage::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: -10px;
+        width: 0;
+        height: 0;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 30px solid #8d6e63;
+    }
+
+    .pixel-cottage::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        width: 16px;
+        height: 24px;
+        background: #5d4037;
+    }
+
+    .pixel-cloud-retro {
+        background-color: #ffffff;
+        position: absolute;
+        filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
+    }
+
+    .pixel-cloud-retro::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 15%;
+        width: 70%;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    .pixel-cloud-retro::after {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 30%;
+        width: 40%;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    .pixel-bird {
+        width: 20px;
+        height: 12px;
+        background: white;
+        position: relative;
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .pixel-bird::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        right: -4px;
+        width: 4px;
+        height: 4px;
+        background: #fbbf24;
+    }
+
+    .pixel-bird::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 2px;
+        height: 2px;
+        background: #000;
+        z-index: 2;
+    }
+
+    .pixel-wing {
+        position: absolute;
+        top: -6px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        background: #e5e7eb;
+        animation: wing-flap 0.3s steps(2) infinite alternate;
+    }
+
+    .pixel-plant-wrapper {
+        position: absolute;
+        transform-origin: bottom center;
+        animation: sway 3s ease-in-out infinite;
+    }
+
+    .pixel-grass-blade {
+        width: 4px;
+        height: 8px;
+        background: #1b5e20;
+        position: relative;
+        box-shadow: 6px 2px 0 #2e7d32, -5px 3px 0 #1b5e20;
+    }
+
+    .pixel-flower-stem {
+        width: 4px;
+        height: 14px;
+        background: #1b5e20;
+        position: relative;
+    }
+
+    .pixel-flower-head {
+        position: absolute;
+        top: -6px;
+        left: -2px;
+        width: 8px;
+        height: 8px;
+        box-shadow: 2px 0 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .pixel-flower-head::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 2px;
+        width: 4px;
+        height: 4px;
+        background: #fff;
+        opacity: 0.5;
+    }
+
+    .pixel-bush {
+        width: 12px;
+        height: 8px;
+        background: #14532d;
+        box-shadow: -4px 2px 0 #1b5e20, 4px 2px 0 #1b5e20, 0 -4px 0 #166534;
+        position: relative;
+    }
+
+    /* Blog Page Components */
+    .pixel-cloud {
+        position: absolute;
+        background: #fff;
+        box-shadow: 4px 4px 0 0 #000;
+    }
+
+    .pixel-cloud::after,
+    .pixel-cloud::before {
+        content: '';
+        position: absolute;
+        background: #fff;
+    }
+
+    .hill-bg {
+        background: #81c784;
+        clip-path: polygon(0 100%, 100% 100%, 100% 40%, 75% 20%, 50% 50%, 25% 30%, 0 60%);
+    }
+
+    .hill-fg {
+        background: #4caf50;
+        clip-path: polygon(0 100%, 100% 100%, 100% 60%, 80% 80%, 60% 50%, 30% 70%, 0 40%);
+    }
+
+    .flower {
+        position: absolute;
+        bottom: 5vh;
+        width: 8px;
+        height: 8px;
+        z-index: 5;
+        box-shadow: 2px 2px 0 #000;
+    }
+
+    /* Animation Utilities */
+    .animate-bird-fly {
+        animation: bird-fly 15s linear infinite;
+    }
+}
+
+/* Specific Pixel Art Shapes that are hard in pure Tailwind utility */
+.pixel-tree-shape {
+    background: #2E8B57;
+    box-shadow:
+        -10px 10px 0 #3CB371,
+        10px -5px 0 #2E8B57,
+        5px 15px 0 #228B22;
+}
+
+.pixel-tree-simple {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 40px solid #1b5e20;
+}
+
+.pixel-tree-simple::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #5d4037;
+}
+
+.bubble-tail::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: 40px;
+    border-width: 16px 16px 0;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}
+
+.bubble-tail::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 44px;
+    border-width: 12px 12px 0;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(132, 204, 22, 0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fall-rotate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(100px) rotate(360deg);
+    }
+}
+
+@keyframes bird-fly {
+    0% {
+        left: -10%;
+        top: 20%;
+    }
+
+    100% {
+        left: 110%;
+        top: 15%;
+    }
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-bird-fly {
+    animation: bird-fly 15s linear infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* Pixel text shadow for login title */
+.pixel-text-shadow {
+    text-shadow: 3px 3px 0px #000, -1px -1px 0 #fff;
+}
+
+/* Login scanlines effect override */
+.scanlines-overlay::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Login vignette effect */
+.vignette::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 10;
+    pointer-events: none;
+}

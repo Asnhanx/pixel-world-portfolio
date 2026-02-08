@@ -43,13 +43,6 @@ const Home: React.FC = () => {
 
     return (
         <div className="bg-sky-vibrant h-screen w-full overflow-hidden text-ink-dark font-pixel-body relative">
-            <style>{`
-                @keyframes float {
-                    0% { transform: translateY(0) rotate(0deg); }
-                    100% { transform: translateY(100px) rotate(360deg); }
-                }
-            `}</style>
-
             {/* Background Layers */}
             <div className="fixed inset-0 z-0 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-sky-400 to-sky-100"></div>
@@ -77,7 +70,7 @@ const Home: React.FC = () => {
                         <div className="absolute top-0 left-1/4 w-40 h-40 bg-sakura-pink rounded-full opacity-90 blur-xl"></div>
                         <div className="absolute top-20 right-1/4 w-52 h-48 bg-deep-sakura rounded-full opacity-80 blur-lg"></div>
                         {petals.map((style, i) => (
-                            <SakuraPetal key={i} style={style} />
+                            <SakuraPetal key={i} style={{ ...style, animationName: 'fall-rotate' }} />
                         ))}
                     </div>
                 </div>
@@ -125,10 +118,10 @@ const Home: React.FC = () => {
 
                     {/* Welcome Box */}
                     <div className="lg:w-1/2 pointer-events-auto">
-                        <div className="bg-paper-cream dialogue-border p-10 relative overflow-hidden">
+                        <div className="bg-paper-cream dialogue-border p-10 relative overflow-hidden transform hover:scale-[1.01] transition-transform duration-300">
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <span className="w-3 h-3 bg-red-400 rounded-full"></span>
+                                    <span className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></span>
                                     <span className="font-hand-drawn text-xl text-gray-400">系统提示: 欢迎归来</span>
                                 </div>
                                 <h1 className="font-pixel-title text-5xl md:text-6xl text-ink-dark mb-6 leading-tight">
@@ -139,10 +132,10 @@ const Home: React.FC = () => {
                                     在这个宁静的小角落，我记录着每一个闪光的瞬间。希望这些像素能为你带来一丝温暖。
                                 </p>
                                 <div className="flex gap-4">
-                                    <Link to="/blog" className="bg-deep-sakura text-white px-8 py-4 dialogue-border font-pixel-title text-xl hover:translate-y-1 transition-transform inline-block">
+                                    <Link to="/blog" className="cursor-pointer bg-deep-sakura text-white px-8 py-4 dialogue-border font-pixel-title text-xl hover:translate-y-1 transition-transform inline-block hover:shadow-lg">
                                         博客
                                     </Link>
-                                    <Link to="/projects" className="bg-white text-ink-dark px-8 py-4 dialogue-border font-pixel-title text-xl hover:translate-y-1 transition-transform inline-block">
+                                    <Link to="/projects" className="cursor-pointer bg-white text-ink-dark px-8 py-4 dialogue-border font-pixel-title text-xl hover:translate-y-1 transition-transform inline-block hover:shadow-lg">
                                         作品集
                                     </Link>
                                 </div>
@@ -151,16 +144,16 @@ const Home: React.FC = () => {
                         </div>
 
                         {/* Recent Update Small Box - Now Dynamic */}
-                        <div className="mt-8 bg-black/60 backdrop-blur-md p-4 dialogue-border border-white/40 max-w-sm">
+                        <div className="mt-8 bg-black/60 backdrop-blur-md p-4 dialogue-border border-white/40 max-w-sm hover:bg-black/70 transition-colors cursor-pointer group">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-zen-green dialogue-border flex items-center justify-center shrink-0">
+                                <div className="w-12 h-12 bg-zen-green dialogue-border flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
                                     <span className="material-symbols-outlined text-white">auto_awesome</span>
                                 </div>
                                 <div className="text-white">
                                     <span className="text-[10px] font-pixel-title text-sakura-pink uppercase tracking-widest">最新动态</span>
                                     {latestPost ? (
                                         <>
-                                            <h3 className="font-hand-drawn text-lg">{latestPost.title}</h3>
+                                            <h3 className="font-hand-drawn text-lg group-hover:text-sakura-pink transition-colors">{latestPost.title}</h3>
                                             <p className="text-[10px] font-pixel-body opacity-60">
                                                 {new Date(latestPost.created_at).toISOString().slice(0, 10).replace(/-/g, '.')} • {formatReadTime(latestPost.content)}
                                             </p>
@@ -179,7 +172,7 @@ const Home: React.FC = () => {
                     {/* Character/Avatar Area */}
                     <div className="lg:w-1/2 relative h-[400px] flex items-end justify-center pointer-events-auto">
                         <div className="relative w-64 h-80">
-                            <div className="absolute inset-0 z-20 transition-transform hover:scale-105 duration-500">
+                            <div className="absolute inset-0 z-20 transition-transform hover:scale-105 duration-500 cursor-pointer">
                                 {/* Pixel Character Avatar */}
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-[#FFE0BD] dialogue-border overflow-hidden">
                                     <div className="absolute top-0 left-0 w-full h-10 bg-ink-dark"></div>
@@ -199,8 +192,8 @@ const Home: React.FC = () => {
                             </div>
 
                             {/* Floating Mascot */}
-                            <div className="absolute -top-12 -right-8 z-30 animate-bounce">
-                                <div className="w-14 h-14 bg-white dialogue-border relative rotate-12">
+                            <div className="absolute -top-12 -right-8 z-30 animate-bounce cursor-pointer">
+                                <div className="w-14 h-14 bg-white dialogue-border relative rotate-12 hover:rotate-45 transition-transform">
                                     <div className="absolute -top-3 left-0 w-4 h-4 bg-white dialogue-border -rotate-45"></div>
                                     <div className="absolute -top-3 right-0 w-4 h-4 bg-white dialogue-border rotate-45"></div>
                                     <div className="absolute top-5 left-3 w-1.5 h-1.5 bg-ink-dark"></div>
@@ -216,17 +209,17 @@ const Home: React.FC = () => {
 
             {/* Music Player */}
             <div className="fixed bottom-8 left-8 z-50 pointer-events-auto">
-                <div className="bg-paper-cream/90 backdrop-blur-sm dialogue-border p-4 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-deep-sakura dialogue-border flex items-center justify-center text-white">
+                <div className="bg-paper-cream/90 backdrop-blur-sm dialogue-border p-4 flex items-center gap-4 hover:scale-105 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-deep-sakura dialogue-border flex items-center justify-center text-white cursor-pointer hover:bg-sakura-pink transition-colors">
                         <span className="material-symbols-outlined animate-spin">music_note</span>
                     </div>
                     <div>
                         <div className="font-pixel-title text-xs text-gray-400">正在播放</div>
                         <div className="font-hand-drawn text-lg">蒸汽波 - 浅草之夏 (Lofi)</div>
                         <div className="flex gap-2 mt-1">
-                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura">fast_rewind</span>
-                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura">pause</span>
-                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura">fast_forward</span>
+                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura transition-colors">fast_rewind</span>
+                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura transition-colors">pause</span>
+                            <span className="material-symbols-outlined text-sm cursor-pointer hover:text-deep-sakura transition-colors">fast_forward</span>
                         </div>
                     </div>
                 </div>
@@ -245,6 +238,7 @@ const Home: React.FC = () => {
             <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03]" style={{ background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))', backgroundSize: '100% 4px, 3px 100%' }}></div>
         </div>
     );
+
 };
 
 export default Home;

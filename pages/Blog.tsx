@@ -46,48 +46,11 @@ const Blog: React.FC = () => {
 
     return (
         <div className="bg-comic-bg text-black font-pixel selection:bg-action-lime selection:text-black h-screen w-full overflow-hidden flex flex-col relative">
-            <style>{`
-                .pixel-cloud {
-                    position: absolute;
-                    background: #fff;
-                    box-shadow: 4px 4px 0 0 #000;
-                }
-                .pixel-cloud::after, .pixel-cloud::before {
-                    content: '';
-                    position: absolute;
-                    background: #fff;
-                }
-                @keyframes float-cloud {
-                    0% { transform: translateX(100vw); }
-                    100% { transform: translateX(-200px); }
-                }
-                .cloud-anim-1 { animation: float-cloud 60s linear infinite; top: 10%; width: 100px; height: 30px; }
-                .cloud-anim-2 { animation: float-cloud 85s linear infinite; top: 20%; width: 80px; height: 25px; animation-delay: -30s; }
-                .cloud-anim-3 { animation: float-cloud 70s linear infinite; top: 15%; width: 120px; height: 40px; animation-delay: -10s; }
-                
-                .hill-bg {
-                    background: #81c784;
-                    clip-path: polygon(0 100%, 100% 100%, 100% 40%, 75% 20%, 50% 50%, 25% 30%, 0 60%);
-                }
-                .hill-fg {
-                    background: #4caf50;
-                    clip-path: polygon(0 100%, 100% 100%, 100% 60%, 80% 80%, 60% 50%, 30% 70%, 0 40%);
-                }
-                .flower {
-                    position: absolute;
-                    bottom: 5vh;
-                    width: 8px;
-                    height: 8px;
-                    z-index: 5;
-                    box-shadow: 2px 2px 0 #000;
-                }
-            `}</style>
-
             {/* Sky & Environment */}
             <div className="fixed inset-0 z-0 bg-sky-300" style={{ backgroundImage: 'linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%)' }}></div>
-            <div className="fixed pixel-cloud cloud-anim-1 opacity-80"></div>
-            <div className="fixed pixel-cloud cloud-anim-2 opacity-90"></div>
-            <div className="fixed pixel-cloud cloud-anim-3 opacity-70"></div>
+            <div className="fixed pixel-cloud cloud-anim-1 opacity-80" style={{ animation: 'float-cloud 60s linear infinite', top: '10%', width: '100px', height: '30px' }}></div>
+            <div className="fixed pixel-cloud cloud-anim-2 opacity-90" style={{ animation: 'float-cloud 85s linear infinite', top: '20%', width: '80px', height: '25px', animationDelay: '-30s' }}></div>
+            <div className="fixed pixel-cloud cloud-anim-3 opacity-70" style={{ animation: 'float-cloud 70s linear infinite', top: '15%', width: '120px', height: '40px', animationDelay: '-10s' }}></div>
 
             <div className="fixed bottom-0 w-full h-[40vh] hill-bg z-0 opacity-90"></div>
             <div className="fixed bottom-0 w-full h-[25vh] hill-fg z-1 border-t-4 border-black"></div>
