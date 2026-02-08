@@ -58,24 +58,48 @@ if ($ref !== "refs/heads/$branch") {
 // Execute deploy
 writeLog('Starting deployment...');
 
-$commands = [
+// Step 1: Git pull
+$gitCommands = [
     "cd $projectPath",
     'git fetch origin',
     "git reset --hard origin/$branch",
 ];
 
 $output = [];
-$fullCommand = implode(' && ', $commands) . ' 2>&1';
+$fullCommand = implode(' && ', $gitCommands) . ' 2>&1';
 exec($fullCommand, $output, $returnCode);
 
 $outputStr = implode("\n", $output);
-writeLog("Deploy output:\n$outputStr");
-writeLog("Deploy finished with code: $returnCode");
+writeLog("Git update output:\n$outputStr");
 
-if ($returnCode === 0) {
+if ($returnCode !== 0) {
+    writeLog("Git update failed with code: $returnCode");
+    http_response_code(500);
+    echo "Git update failed!\n$outputStr";
+    exit;
+}
+
+// Step 2: Install dependencies and build frontend
+writeLog('Building frontend...');
+
+$buildCommands = [
+    "cd $projectPath",
+    'npm install --production=false',  // Install all deps including devDependencies
+    'npm run build',
+];
+
+$buildOutput = [];
+$buildCommand = implode(' && ', $buildCommands) . ' 2>&1';
+exec($buildCommand, $buildOutput, $buildReturnCode);
+
+$buildOutputStr = implode("\n", $buildOutput);
+writeLog("Build output:\n$buildOutputStr");
+writeLog("Build finished with code: $buildReturnCode");
+
+if ($buildReturnCode === 0) {
     http_response_code(200);
-    echo "Deploy successful!\n$outputStr";
+    echo "Deploy successful!\nGit:\n$outputStr\n\nBuild:\n$buildOutputStr";
 } else {
     http_response_code(500);
-    echo "Deploy failed!\n$outputStr";
+    echo "Build failed!\n$buildOutputStr";
 }
