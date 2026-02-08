@@ -86,6 +86,6 @@ mysql -u root -p < api/init.sql
 
 详见 [deploy/DEPLOY.md](./deploy/DEPLOY.md)
 
-## 📄 License
+## 📄 License test
 
 MIT License
