@@ -9,6 +9,16 @@
 -- DROP TABLE IF EXISTS posts;
 -- DROP TABLE IF EXISTS projects;
 -- DROP TABLE IF EXISTS settings;
+-- DROP TABLE IF EXISTS users;
+
+-- Users table for authentication
+CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_username (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Blog posts table
 CREATE TABLE IF NOT EXISTS posts (

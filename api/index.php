@@ -25,6 +25,11 @@ switch ($request['endpoint']) {
         handleProjects($request);
         break;
         
+    case 'auth':
+        require_once __DIR__ . '/auth.php';
+        handleAuth($request);
+        break;
+        
     case 'settings':
         require_once __DIR__ . '/settings.php';
         handleSettings($request);
