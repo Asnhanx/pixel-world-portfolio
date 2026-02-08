@@ -122,7 +122,7 @@ const Home: React.FC = () => {
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-4">
                                     <span className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></span>
-                                    <span className="font-hand-drawn text-xl text-gray-400">系统提示: 欢迎归来</span>
+                                    <span className="font-hand-drawn text-xl text-gray-400">系统提示: 欢迎回家</span>
                                 </div>
                                 <h1 className="font-pixel-title text-5xl md:text-6xl text-ink-dark mb-6 leading-tight">
                                     欢迎来到<br />
