@@ -111,12 +111,12 @@ const Home: React.FC = () => {
                         <span className="material-symbols-outlined text-sm">palette</span>
                     </div>
                 </Link>
-                <button className="group flex items-center gap-3">
-                    <span className="bg-paper-cream px-4 py-2 dialogue-border font-pixel-title text-lg group-hover:bg-sakura-pink transition-colors">关于</span>
+                <Link to="/login" className="group flex items-center gap-3">
+                    <span className="bg-deep-sakura px-4 py-2 dialogue-border font-pixel-title text-lg group-hover:bg-sakura-pink transition-colors text-white">登录</span>
                     <div className="w-10 h-10 bg-amber-800 dialogue-border flex items-center justify-center text-white">
-                        <span className="material-symbols-outlined text-sm">person</span>
+                        <span className="material-symbols-outlined text-sm">login</span>
                     </div>
-                </button>
+                </Link>
             </nav>
 
             {/* Main Content */}
