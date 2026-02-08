@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel World Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;700&family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=DotGothic16&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Home Theme
+                        'sakura-pink': '#FFB7C5',
+                        'deep-sakura': '#FF91A4',
+                        'zen-green': '#98FB98',
+                        'sky-vibrant': '#87CEFA',
+                        'paper-cream': '#FFFDF0',
+                        'ink-dark': '#2D2926',
+                        'path-grey': '#C0C0C0',
+                        
+                        // Comic Theme
+                        'comic-bg': '#ffffff',
+                        'comic-frame': '#000000',
+                        'tone-light': '#e8e8e8',
+                        'tone-dark': '#c0c0c0',
+                        'action-lime': '#ccff00',
+                        'action-orange': '#ffaa00',
+                        'action-pink': '#ff99cc',
+                        'action-sky': '#66ccff',
+                        'nature-green': '#4caf50',
+                        'nature-dark-green': '#2e7d32',
+
+                        // Console Theme
+                        'console-body': '#d0d0d0',
+                        'console-dark': '#707070',
+                        'console-screen-bg': '#9bbc0f', 
+                        'console-screen-off': '#8bac0f',
+                        'console-screen-dark': '#306230',
+                        'console-screen-light': '#9bbc0f',
+                        'console-screen-black': '#0f380f',
+                        'btn-a': '#ff4757',
+                        'btn-b': '#ff6b81',
+                        'cottage-roof': '#8d6e63',
+                        'cottage-wall': '#ffe0b2',
+                    },
+                    fontFamily: {
+                        // Home
+                        'pixel-title': ['"ZCOOL KuaiLe"', 'cursive'],
+                        'pixel-body': ['"Noto Sans SC"', 'sans-serif'],
+                        'hand-drawn': ['"Ma Shan Zheng"', 'cursive'],
+                        // Comic
+                        'pixel': ['"DotGothic16"', 'sans-serif'],
+                        'manga-title': ['"ZCOOL QingKe HuangYou"', 'cursive'],
+                        'mono': ['"VT323"', 'monospace'],
+                        // Console
+                        'console-pixel': ['"Press Start 2P"', 'cursive'],
+                        'retro': ['"VT323"', 'monospace'],
+                        'chinese-pixel': ['"ZCOOL KuaiLe"', '"Press Start 2P"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'pixel': '4px 4px 0px 0px rgba(0,0,0,0.15)',
+                        'comic': '6px 6px 0px 0px #000000',
+                        'comic-sm': '3px 3px 0px 0px #000000',
+                        'comic-hover': '8px 8px 0px 0px #000000',
+                        'pixel-lg': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'pixel-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'console-depth': 'inset -5px -5px 10px rgba(0,0,0,0.1), 10px 20px 0px rgba(0,0,0,0.3)',
+                        'screen-inner': 'inset 4px 4px 10px rgba(0,0,0,0.4)',
+                        'btn-press': 'inset 2px 2px 5px rgba(0,0,0,0.3)',
+                    },
+                    backgroundImage: {
+                        'halftone': 'radial-gradient(#c0c0c0 1px, transparent 1px)',
+                        'speed-lines': 'repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(0,0,0,0.05) 4px, rgba(0,0,0,0.05) 5px)',
+                    }
+                },
+            },
+        };
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .dialogue-border {
+                border: 4px solid #2D2926;
+                box-shadow: 
+                    8px 0 0 -4px #2D2926,
+                    -8px 0 0 -4px #2D2926,
+                    0 8px 0 -4px #2D2926,
+                    0 -8px 0 -4px #2D2926;
+            }
+            .sakura-petal {
+                width: 6px;
+                height: 6px;
+                background: #FFB7C5;
+                position: absolute;
+            }
+            .waterfall-pixel {
+                background: linear-gradient(to bottom, #E0FFFF, #87CEEB);
+                width: 100%;
+                height: 100%;
+                opacity: 0.6;
+            }
+            .action-lines {
+                background: repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0,0,0,0.03) 10px,
+                    rgba(0,0,0,0.03) 11px
+                );
+            }
+            .screentone {
+                background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
+                background-size: 4px 4px;
+                opacity: 0.1;
+            }
+            .scanlines {
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255,255,255,0),
+                    rgba(255,255,255,0) 50%,
+                    rgba(0,0,0,0.05) 50%,
+                    rgba(0,0,0,0.05)
+                );
+                background-size: 100% 4px;
+            }
+            .pixel-corners {
+                clip-path: polygon(
+                    4px 0, calc(100% - 4px) 0, 
+                    100% 4px, 100% calc(100% - 4px), 
+                    calc(100% - 4px) 100%, 4px 100%, 
+                    0 calc(100% - 4px), 0 4px
+                );
+            }
+            .console-scrollbar::-webkit-scrollbar {
+                width: 8px;
+            }
+            .console-scrollbar::-webkit-scrollbar-track {
+                background: #8bac0f;
+            }
+            .console-scrollbar::-webkit-scrollbar-thumb {
+                background: #306230;
+                border: 1px solid #0f380f;
+            }
+        }
+        
+        /* Specific Pixel Art Shapes that are hard in pure Tailwind utility */
+        .pixel-tree-shape {
+            background: #2E8B57;
+            box-shadow: 
+                -10px 10px 0 #3CB371,
+                10px -5px 0 #2E8B57,
+                5px 15px 0 #228B22;
+        }
+        .pixel-tree-simple {
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 40px solid #1b5e20;
+        }
+        .pixel-tree-simple::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: -5px;
+            width: 10px;
+            height: 10px;
+            background: #5d4037;
+        }
+        .bubble-tail::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            right: 40px;
+            border-width: 16px 16px 0;
+            border-style: solid;
+            border-color: #000000 transparent transparent transparent;
+        }
+        .bubble-tail::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 44px;
+            border-width: 12px 12px 0;
+            border-style: solid;
+            border-color: #ffffff transparent transparent transparent;
+            z-index: 1;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="overflow-x-hidden">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
