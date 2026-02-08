@@ -34,6 +34,12 @@ switch ($request['endpoint']) {
         require_once __DIR__ . '/settings.php';
         handleSettings($request);
         break;
+    
+    case 'webhook':
+    case 'webhook.php':
+        require_once __DIR__ . '/webhook.php';
+        // webhook.php handles everything itself
+        break;
         
     case 'health':
         // Health check endpoint
